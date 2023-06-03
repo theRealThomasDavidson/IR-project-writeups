@@ -1,4 +1,4 @@
-# Incident Responce Project Write-up
+# Incident Response Project Write-up
 
 #### Thomas Davidson
 
